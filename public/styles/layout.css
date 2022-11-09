@@ -24,14 +24,49 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 100px;
 }
-main {
+
+.container {
   width: 90%;
   background-color: #f4f1ec;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
-
+article.tweet {
+  border: 3px solid black;
+  margin-top: 2em;
+  padding: 16px;
+}
+article.tweet:hover {
+  box-shadow: 5px 5px rgb(178, 178, 241);
+}
+article.tweet p,
+h4 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+article.tweet header {
+  display: flex;
+  justify-content: space-between;
+}
+article.tweet footer {
+  display: flex;
+  justify-content: space-between;
+}
+article.tweet .content {
+  border: none;
+  border-bottom: 4px solid black;
+}
+article.tweet footer p {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+article.tweet footer p i:hover {
+  color: #d69920;
+  cursor: pointer;
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
