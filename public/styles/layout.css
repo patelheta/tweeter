@@ -50,6 +50,14 @@ h4 {
 article.tweet header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+article.tweet header h4 {
+  margin-left: 10px;
+}
+article.tweet header .handle {
+  margin-left: auto;
+  float: right;
 }
 article.tweet footer {
   display: flex;

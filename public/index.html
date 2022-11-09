@@ -34,7 +34,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/client.js" defer></script>
     <script
       type="text/javascript"
       src="/scripts/composer-char-counter.js"
@@ -73,25 +73,7 @@
           </div>
         </form>
       </section>
-      <section class="allTweets">
-        <article class="tweet">
-          <header>
-            <h4>Heta patel</h4>
-            <p>@heta</p>
-          </header>
-
-          <p class="content">Hello world!</p>
-
-          <footer>
-            <p>10 days ago</p>
-            <p>
-              <i class="fa-solid fa-flag"></i>
-              <i class="fa-solid fa-retweet"></i>
-              <i class="fa-sharp fa-solid fa-heart"></i>
-            </p>
-          </footer>
-        </article>
-      </section>
+      <section id="allTweets" class="allTweets"></section>
     </main>
   </body>
 </html>
