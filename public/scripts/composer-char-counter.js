@@ -11,8 +11,4 @@ $(document).ready(function() {
       counterLabel.css("color", "#55514a");
     }
   });
-
-
-
-
 });

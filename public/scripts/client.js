@@ -3,10 +3,11 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+$(document).ready(function() {
 
 
-const createTweetElement = function(tweet) {
-  const tweetArticle = $(`
+  const createTweetElement = function(tweet) {
+    const tweetArticle = $(`
   <article class="tweet">
     <header>
       <img src=${tweet.user.avatars} alt="avatar" />
@@ -25,38 +26,43 @@ const createTweetElement = function(tweet) {
       </p>
     </footer>
   </article>`);
-  return tweetArticle;
-};
+    return tweetArticle;
+  };
 
-const renderTweets = function(tweets) {
-  for (let tweet of tweets) {
+  const renderTweets = function(tweets) {
+    tweets = tweets.reverse();
+    $("#allTweets").empty();
 
-    let $tweet = createTweetElement(tweet);
-    $('#allTweets').append($tweet);
-  }
-};
+    for (let tweet of tweets) {
+      let $tweet = createTweetElement(tweet);
+      $('#allTweets').append($tweet);
+    }
+  };
 
-$("#tweetForm").submit(function(event) {
-  event.preventDefault();
-  let text = $("#tweet-text").val();
-  console.log(text.length);
-  if (text.length <= 0) {
-    alert("Please enter text message");
-    return;
-  } else if (text.length > 140) {
-    alert("Text must not exceed 140 characters");
-    return;
-  }
-  let data = $(this).serialize();
-  $.post("/tweets/", data).then(function(data) {
-    console.log("Success: ", data);
+  $("#tweetForm").submit(function(event) {
+    event.preventDefault();
+    let text = $("#tweet-text").val();
+    if (text.length <= 0) {
+      alert("Please enter text message");
+      return;
+    } else if (text.length > 140) {
+      alert("Text must not exceed 140 characters");
+      return;
+    }
+    let data = $(this).serialize();
+    $.post("/tweets/",
+      data,
+      function(data) {
+        $("#tweet-text").val('');
+        loadtweets();
+      });
   });
+
+  const loadtweets = function() {
+    $.ajax("/tweets", { method: "GET" }).then(function(data) {
+      renderTweets(data);
+    });
+  };
+
+  loadtweets();
 });
-
-const loadtweets = function() {
-  $.get("/tweets", function(data) {
-    renderTweets(data);
-  });
-};
-
-loadtweets();

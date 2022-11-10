@@ -25,3 +25,7 @@ textarea {
   background-color: #4151a2;
   color: white;
 }
+
+.btnTweet:hover {
+  outline: rgb(178, 178, 241) solid 5px;
+}
