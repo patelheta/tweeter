@@ -4,13 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const calculateDaysAgo = function(date) {
-  const oneDay = 24 * 60 * 60 * 1000;
-  const today = new Date();
-
-  const diffDays = Math.round(Math.abs((date - today) / oneDay));
-  return diffDays;
-};
 
 const createTweetElement = function(tweet) {
   const tweetArticle = $(`
@@ -37,6 +30,7 @@ const createTweetElement = function(tweet) {
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
+
     let $tweet = createTweetElement(tweet);
     $('#allTweets').append($tweet);
   }
@@ -44,6 +38,15 @@ const renderTweets = function(tweets) {
 
 $("#tweetForm").submit(function(event) {
   event.preventDefault();
+  let text = $("#tweet-text").val();
+  console.log(text.length);
+  if (text.length <= 0) {
+    alert("Please enter text message");
+    return;
+  } else if (text.length > 140) {
+    alert("Text must not exceed 140 characters");
+    return;
+  }
   let data = $(this).serialize();
   $.post("/tweets/", data).then(function(data) {
     console.log("Success: ", data);
@@ -52,7 +55,6 @@ $("#tweetForm").submit(function(event) {
 
 const loadtweets = function() {
   $.get("/tweets", function(data) {
-    console.log(data);
     renderTweets(data);
   });
 };
