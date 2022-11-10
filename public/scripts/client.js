@@ -24,7 +24,7 @@ const createTweetElement = function(tweet) {
     <p class="content">${tweet.content.text}</p>
 
     <footer>
-      <p>${calculateDaysAgo(tweet.created_at)} days ago</p>
+      <p>${timeago.format(tweet.created_at)}</p>
       <p>
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
