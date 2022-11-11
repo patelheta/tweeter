@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// Escap function for cross site scripting.
 const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -14,7 +15,7 @@ const escape = function(str) {
 $(document).ready(function() {
 
 
-
+  // Function to create Tweet article tag.
   const createTweetElement = function(tweet) {
     const tweetArticle = $(`
   <article class="tweet">
@@ -38,6 +39,8 @@ $(document).ready(function() {
     return tweetArticle;
   };
 
+
+  // Function for render Tweets.
   const renderTweets = function(tweets) {
     tweets = tweets.reverse();
     $("#allTweets").empty();
@@ -48,6 +51,8 @@ $(document).ready(function() {
     }
   };
 
+
+  // Handle form submit event.
   $("#tweetForm").submit(function(event) {
     event.preventDefault();
     let text = $("#tweet-text").val();
@@ -61,15 +66,20 @@ $(document).ready(function() {
       return;
     }
     let data = $(this).serialize();
+
+    // Make a post request to save a tweet.
     $.post("/tweets/",
       data,
       function(data) {
         $(".alert").hide();
         $("#tweet-text").val('');
+        $(".counter").val("140");
         loadtweets();
       });
   });
 
+
+  // function to Load tweets on page load
   const loadtweets = function() {
     $.ajax("/tweets", { method: "GET" }).then(function(data) {
       renderTweets(data);

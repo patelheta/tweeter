@@ -1,3 +1,5 @@
+// Function to handle input character count functionality.
+
 $(document).ready(function() {
   $("#tweet-text").on("input", function() {
     let text = $(this).val();
