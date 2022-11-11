@@ -6,6 +6,16 @@ form {
   display: flex;
   flex-direction: column;
 }
+.alert {
+  display: none;
+  border: 2px solid red;
+  color: red;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px;
+  text-align: center;
+}
 textarea {
   border: none;
   border-bottom: 4px solid black;
