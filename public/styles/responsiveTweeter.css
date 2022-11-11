@@ -1,0 +1,21 @@
+@media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    gap: 8rem;
+    align-items: normal;
+  }
+  .container {
+    margin-top: 22vh;
+    margin-right: 5rem;
+  }
+  .profile {
+    height: fit-content;
+    width: 65%;
+    padding-top: 33px;
+    margin-top: 25vh;
+    margin-left: 5rem;
+  }
+  nav {
+    background-color: #4056a1;
+  }
+}

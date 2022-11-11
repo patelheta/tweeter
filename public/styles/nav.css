@@ -3,7 +3,7 @@ nav {
   width: 100%;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  background-color: #4056a1;
+  background-color: #d69920;
   color: #ffffff;
   font-family: "Bungee", cursive;
   justify-content: space-between;
@@ -11,7 +11,11 @@ nav {
   align-items: center;
   position: fixed;
 }
+nav span {
+  font-size: 32px;
+}
 .createTweet {
+  font-size: 18px;
   font-family: "Source Sans Pro", sans-serif;
 }
 .newTweetLabel {
